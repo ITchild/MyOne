@@ -8,6 +8,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity {
+
     private DB_Server db_server;
 
     @Override
@@ -36,4 +37,9 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+    }
 }

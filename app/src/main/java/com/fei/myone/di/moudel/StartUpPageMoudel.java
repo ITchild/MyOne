@@ -10,6 +10,7 @@ import dagger.Module;
 
 @Module
 public class StartUpPageMoudel {
+
     private StartUpPageContract.View view;
 
     public StartUpPageMoudel(StartUpPageContract.View view){

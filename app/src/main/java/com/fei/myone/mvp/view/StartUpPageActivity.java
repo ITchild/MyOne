@@ -71,4 +71,10 @@ public class StartUpPageActivity extends BaseActivity implements StartUpPageCont
         startActivity(intent);
         finish();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        startUpPagePersenter.detachView();
+    }
 }
