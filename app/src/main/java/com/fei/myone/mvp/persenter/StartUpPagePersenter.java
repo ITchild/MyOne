@@ -1,5 +1,6 @@
 package com.fei.myone.mvp.persenter;
 
+import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
@@ -41,6 +42,16 @@ public class StartUpPagePersenter implements StartUpPageContract.Persenter {
     public void getWeekViewId() {
         view.setWeekView(startUpPageModel.getViewId());
         jumpHomeActivity();
+    }
+
+    @Override
+    public void getDateString() {
+        view.setDate(startUpPageModel.getDateString());
+    }
+
+    public void getPermissing(){
+
+
     }
 
     /**

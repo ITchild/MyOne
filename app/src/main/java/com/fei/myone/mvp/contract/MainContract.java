@@ -1,5 +1,7 @@
 package com.fei.myone.mvp.contract;
 
+import android.support.v4.app.Fragment;
+
 import com.fei.myone.BasePersenter;
 import com.fei.myone.BaseView;
 
@@ -10,10 +12,11 @@ import com.fei.myone.BaseView;
 public abstract class MainContract {
 
     public interface View extends BaseView{
-
+        void changeFragment(Fragment fragment);
     }
 
     public interface Persenter extends BasePersenter<View>{
+        void changeFragment(int position);
 
     }
 

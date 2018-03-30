@@ -2,4 +2,10 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="Home_buttom_hight">50dip</dimen>
+
+    <dimen name="margin_10dip">10dip</dimen>
+    <dimen name="margin_20dip">20dip</dimen>
+    <dimen name="margin_30dip">30dip</dimen>
 </resources>

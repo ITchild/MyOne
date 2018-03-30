@@ -2,6 +2,7 @@ package com.fei.myone.mvp.view;
 
 import android.content.Intent;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.fei.myone.BaseActivity;
 import com.fei.myone.R;
@@ -25,6 +26,8 @@ public class StartUpPageActivity extends BaseActivity implements StartUpPageCont
     ImageView startUp_disTop_iv;
     @Bind(R.id.startUp_disBottom_iv)
     ImageView startUp_disBottom_iv;
+    @Bind(R.id.startUp_disBottom_tv)
+    TextView startUp_disBottom_tv;
 
     @Inject
     StartUpPagePersenter startUpPagePersenter;
@@ -38,11 +41,15 @@ public class StartUpPageActivity extends BaseActivity implements StartUpPageCont
     public void initView() {
         ButterKnife.bind(this);
         startUpPagePersenter.attachView(this);
+
+        //判断是否为android6.0系统版本，如果是，需要动态添加权限
+        startUpPagePersenter.getPermissing();
     }
 
     @Override
     public void initData() {
         startUpPagePersenter.getWeekViewId();
+        startUpPagePersenter.getDateString();
     }
 
     @Override
@@ -70,6 +77,11 @@ public class StartUpPageActivity extends BaseActivity implements StartUpPageCont
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void setDate(String date) {
+        startUp_disBottom_tv.setText("地球历"+date);
     }
 
     @Override

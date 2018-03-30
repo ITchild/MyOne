@@ -39,4 +39,9 @@ public class StartUpPageModel {
         return R.mipmap.opening_monday;
     }
 
+    public String getDateString(){
+        String dateString = DateUtil.getCurrDate("yyyy年MM月dd日");
+        return dateString;
+    }
+
 }

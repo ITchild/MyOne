@@ -4,5 +4,12 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="black">#000000</color>
     <color name="write">#ffffff</color>
+
+    <color name="tableTopGray">#DDDDDD</color>
+    <color name="startUpButtomText">#5E5E5E</color>
+
+    <color name="me_background">#F4F3F7</color>
+
 </resources>

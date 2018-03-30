@@ -12,10 +12,12 @@ public abstract class StartUpPageContract  {
     public interface View extends BaseView{
         void setWeekView(int viewId);
         void entryHomeActivity();
+        void setDate(String date);
     }
 
     public interface Persenter extends BasePersenter<View>{
         void getWeekViewId();
+        void getDateString();
     }
 
 }
