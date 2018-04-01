@@ -11,9 +11,12 @@
         android:id="@+id/main_dis_fl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        ></FrameLayout>
+        android:layout_above="@+id/main_tabGroupLine_ll">
+
+    </FrameLayout>
 
     <LinearLayout
+        android:id="@+id/main_tabGroupLine_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

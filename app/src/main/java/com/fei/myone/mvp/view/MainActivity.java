@@ -71,8 +71,13 @@ public class MainActivity extends BaseActivity implements MainContract.View{
 
 
     @Override
-    public void changeFragment(Fragment fragment) {
+    public void changeFragment(Fragment fragment,int currId,int forntId) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        if(currId > forntId) {
+            transaction.setCustomAnimations(R.anim.side_right_in, R.anim.side_left_out);
+        }else{
+            transaction.setCustomAnimations(R.anim.side_left_in, R.anim.side_right_out);
+        }
         if (!fragment.isAdded()) {
             transaction.hide(currentFragment).add(R.id.main_dis_fl, fragment).commit();
         } else {
@@ -89,7 +94,7 @@ public class MainActivity extends BaseActivity implements MainContract.View{
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
+        mainPersenter.detachView();
     }
 
 }

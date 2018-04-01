@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MyOne</string>
+
+    <string name="resgiter">还没账号？ 点击<u>注册</u></string>
+
+    <string name="instorcate">创建账号及代表您同意<font color="black"><b>用户服务协议</b></font></string>
 </resources>

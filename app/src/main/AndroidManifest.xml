@@ -7,7 +7,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/one_icon"
-        android:label="@string/app_name"
+        android:label="我的"
         android:supportsRtl="true"
         android:name=".MyOneApplication"
         android:theme="@style/AppTheme" >
