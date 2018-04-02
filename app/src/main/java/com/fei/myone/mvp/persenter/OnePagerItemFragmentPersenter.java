@@ -43,10 +43,10 @@ public class OnePagerItemFragmentPersenter implements OnePagerItemFragmentContra
                 .subscribe(new Action1<OneDataBean>() {
                     @Override
                     public void call(OneDataBean oneDataBean) {
-//                        for(int i=0;i<oneListBean.size();i++){
-//                            listData.add(oneListBean.get(i));
-//                        }
-//                        view.getToDayOneList(listData);
+                        for(int i=0;i<oneDataBean.getData().getContent_list().size();i++){
+                            listData.add(oneDataBean.getData().getContent_list().get(i));
+                        }
+                        view.getToDayOneList(listData);
                     }
                 }, new Action1<Throwable>() {
                     @Override

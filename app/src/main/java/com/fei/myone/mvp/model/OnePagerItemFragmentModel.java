@@ -1,6 +1,7 @@
 package com.fei.myone.mvp.model;
 
 import com.fei.myone.api.ApiManager;
+import com.fei.myone.bean.OneDataBean;
 import com.fei.myone.bean.OneListBean;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class OnePagerItemFragmentModel {
 
     }
 
-    public Observable<OneListBean> getToDayOneList(){
+    public Observable<OneDataBean> getToDayOneList(){
         return ApiManager.getToDayOnes();
     }
 
