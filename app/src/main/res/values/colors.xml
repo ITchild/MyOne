@@ -11,5 +11,6 @@
     <color name="startUpButtomText">#5E5E5E</color>
 
     <color name="me_background">#F4F3F7</color>
+    <color name="default_textColor">#8E8E8E</color>
 
 </resources>

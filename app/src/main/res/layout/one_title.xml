@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:gravity="bottom"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/onetitle_1_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="02"
+        android:gravity="bottom"
+        android:layout_marginLeft="@dimen/margin_10dip"
+        android:textColor="@color/black"
+        android:textSize="@dimen/oneTitle_1_size"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:layout_marginBottom="@dimen/margin_4dip"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/onetitle_2_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_8dip"
+            android:textColor="@color/black"
+            android:gravity="bottom"
+            android:textSize="@dimen/oneTitle_2_size"
+            android:text="Apr.2018"/>
+
+        <ImageView
+            android:id="@+id/onetitle_3_iv"
+            android:layout_width="@dimen/margin_8dip"
+            android:layout_height="@dimen/margin_8dip"
+            android:layout_marginBottom="@dimen/margin_2dip"
+            android:layout_marginLeft="@dimen/margin_2dip"
+            android:src="@mipmap/title_dowm"/>
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="0dip"
+        android:layout_height="1dip"
+        android:layout_weight="1">
+    </View>
+
+    <TextView
+        android:id="@+id/onetitle_location_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/default_textColor"
+        android:textSize="@dimen/oneTitle_location_size"
+        android:text="地球·对流层"/>
+
+    <TextView
+        android:id="@+id/onetitle_Temp_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/default_textColor"
+        android:textSize="@dimen/oneTitle_location_size"
+        android:layout_marginLeft="@dimen/margin_8dip"
+        android:layout_marginRight="@dimen/margin_10dip"
+        android:text="-275℃"/>
+
+</LinearLayout>

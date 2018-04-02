@@ -5,7 +5,17 @@
 
     <dimen name="Home_buttom_hight">50dip</dimen>
 
+    <dimen name="margin_2dip">2dip</dimen>
+    <dimen name="margin_4dip">4dip</dimen>
+    <dimen name="margin_8dip">8dip</dimen>
     <dimen name="margin_10dip">10dip</dimen>
     <dimen name="margin_20dip">20dip</dimen>
     <dimen name="margin_30dip">30dip</dimen>
+
+
+
+    <dimen name="oneTitle_1_size">30sp</dimen>
+    <dimen name="oneTitle_2_size">11sp</dimen>
+    <dimen name="oneTitle_location_size">13sp</dimen>
+
 </resources>

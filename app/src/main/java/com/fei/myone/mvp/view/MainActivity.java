@@ -2,7 +2,6 @@ package com.fei.myone.mvp.view;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.widget.FrameLayout;
 import android.widget.RadioGroup;
 
 import com.fei.myone.BaseActivity;
@@ -12,6 +11,7 @@ import com.fei.myone.di.component.DaggerMainComponent;
 import com.fei.myone.di.moudel.MainMoudel;
 import com.fei.myone.mvp.contract.MainContract;
 import com.fei.myone.mvp.persenter.MainPersenter;
+import com.fei.myone.utils.StatusBarUtils;
 
 import javax.inject.Inject;
 
@@ -20,7 +20,6 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity implements MainContract.View{
     private DB_Server db_server;
-
 
     @Bind(R.id.main_tabGroup_rg)
     RadioGroup main_tabGroup_rg;
@@ -38,6 +37,7 @@ public class MainActivity extends BaseActivity implements MainContract.View{
     @Override
     public void initView() {
         ButterKnife.bind(this);
+        StatusBarUtils.setStatusBarLightMode(getWindow());
         mainPersenter.attachView(this);
         db_server = DB_Server.getInstance();
     }
@@ -68,7 +68,6 @@ public class MainActivity extends BaseActivity implements MainContract.View{
             }
         });
     }
-
 
     @Override
     public void changeFragment(Fragment fragment,int currId,int forntId) {
