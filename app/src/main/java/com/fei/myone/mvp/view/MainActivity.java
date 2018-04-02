@@ -19,7 +19,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity implements MainContract.View{
-    private DB_Server db_server;
 
     @Bind(R.id.main_tabGroup_rg)
     RadioGroup main_tabGroup_rg;
@@ -39,7 +38,6 @@ public class MainActivity extends BaseActivity implements MainContract.View{
         ButterKnife.bind(this);
         StatusBarUtils.setStatusBarLightMode(getWindow());
         mainPersenter.attachView(this);
-        db_server = DB_Server.getInstance();
     }
 
     @Override
