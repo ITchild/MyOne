@@ -31,8 +31,11 @@ public interface ApiManagerService {
             "&uuid=00000000-42f1-d58d-ffff-ffff90ebff61&platform=android")
     Observable<OneDataBean> getToDayOnes();
 
-//    @GET("stories/before/{date}")
-//    Observable<NewsList> getBeforeNews(@Path("date") String date);
+
+
+    @GET("channel/one/{date}/%E6%98%8C%E5%B9%B3?channel=mx&sign=b08e5f8e630769187e5646c3239e46c0" +
+            "&version=4.5.3&uuid=00000000-42f1-d58d-ffff-ffff90ebff61&platform=android")
+    Observable<OneDataBean> getDateOnes(@Path("date") String date);
 //
 //    @GET("story/{id}")
 //    Observable<NewsDetail> getNewsDetail(@Path("id") int id);

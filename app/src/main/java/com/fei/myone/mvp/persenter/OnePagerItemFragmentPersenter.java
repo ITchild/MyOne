@@ -57,6 +57,28 @@ public class OnePagerItemFragmentPersenter implements OnePagerItemFragmentContra
     }
 
     @Override
+    public void getDateOneList(String date) {
+        subscription = onePagerItemFragmentModel.getDateOneList(date)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<OneDataBean>() {
+                    @Override
+                    public void call(OneDataBean oneDataBean) {
+                        for(int i=0;i<oneDataBean.getData().getContent_list().size();i++){
+                            listData.add(oneDataBean.getData().getContent_list().get(i));
+                        }
+                        view.getToDayOneList(listData);
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        System.out.println("-------onFailure" + throwable.getMessage());
+                    }
+                });
+    }
+
+
+    @Override
     public void attachView(@NonNull OnePagerItemFragmentContract.View view) {
         this.view = view;
     }

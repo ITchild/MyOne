@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_oneList_music_ll"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/write"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/oneListmusic_type_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_10dip"
+        android:gravity="center"
+        android:textColor="@color/startUpButtomText"
+        android:textSize="@dimen/oneTitle_location_size"
+        android:text="-音乐-" />
+
+    <TextView
+        android:id="@+id/oneListmusic_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_10dip"
+        android:layout_marginTop="@dimen/margin_10dip"
+        android:textColor="@color/black"
+        android:textSize="@dimen/tv_15sp"
+        tool:text="七月长安" />
+
+    <TextView
+        android:id="@+id/oneListmusic_author_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_10dip"
+        android:layout_marginTop="@dimen/margin_10dip"
+        android:textColor="@color/startUpButtomText"
+        android:layout_marginBottom="@dimen/margin_10dip"
+        android:textSize="@dimen/oneTitle_location_size"
+        tool:text="摄影/Aarah Mark" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_200dip"
+        android:layout_marginLeft="@dimen/margin_10dip"
+        android:layout_marginRight="@dimen/margin_10dip">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/feeds_music"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/feeds_music_words"/>
+
+        <com.fei.myone.ui.XCRoundImageView
+            android:id="@+id/oneListmusic_Roundiv"
+            android:layout_width="@dimen/margin_150dip"
+            android:layout_height="@dimen/margin_150dip"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/margin_10dip"
+            app:border_width="0dp"
+            android:scaleType="fitCenter"
+            app:border_color="@color/write"
+            android:src="@mipmap/default_update_img" />
+
+        <ImageView
+            android:id="@+id/oneListmusic_play_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/play"/>
+
+        <ImageView
+            android:layout_width="@dimen/margin_30dip"
+            android:layout_height="@dimen/margin_30dip"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/margin_10dip"
+            android:layout_marginBottom="@dimen/margin_10dip"
+            android:src="@mipmap/xiami_right"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/oneListmusic_musicA_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_10dip"
+        android:textColor="@color/startUpButtomText"
+        android:textSize="@dimen/oneTitle_2_size"
+        tool:text="sjfkddsjfdsfkllsjfkldfsd"
+        />
+
+
+    <TextView
+        android:id="@+id/oneListmusic_con_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_20dip"
+        android:textColor="@color/black"
+        android:textSize="@dimen/tv_15sp"
+        tool:text="hafhksjdfhuishgkfjhgusdfgkskfujsakunhejknsjniasfjsijffsklmdjflsinjfknjksdjnfjksndf" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_10dip"
+        android:layout_marginLeft="@dimen/margin_10dip"
+        android:layout_marginRight="@dimen/margin_10dip"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/oneListmusic_date_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_2dip"
+            android:textColor="@color/startUpButtomText"
+            android:textSize="@dimen/oneTitle_2_size"
+            tool:text="今天" />
+
+        <View
+            android:layout_width="0dip"
+            android:layout_height="1dip"
+            android:layout_weight="1"></View>
+
+
+        <TextView
+            android:id="@+id/oneListmusic_laud_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/margin_20dip"
+            android:text="4321"
+            android:textColor="@color/startUpButtomText"
+            android:textSize="@dimen/margin_8dip" />
+
+        <ImageView
+            android:id="@+id/oneListmusic_share_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/feeds_share" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_4dip"
+        android:background="@color/tableTopGray"></View>
+
+</LinearLayout>

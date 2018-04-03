@@ -25,4 +25,8 @@ public class OnePagerItemFragmentModel {
         return ApiManager.getToDayOnes();
     }
 
+    public Observable<OneDataBean> getDateOneList(String date){
+        return ApiManager.getDateOnes(date);
+    }
+
 }

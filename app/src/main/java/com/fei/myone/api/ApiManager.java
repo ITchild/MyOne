@@ -31,6 +31,10 @@ public class ApiManager {
     public static Observable<OneDataBean> getToDayOnes(){
         return apiManager.getToDayOnes();
     }
+
+    public static Observable<OneDataBean> getDateOnes(String date){
+        return apiManager.getDateOnes(date);
+    }
 //
 //    public static Observable<NewsList> getBeforeNews(String date){
 //        return apiManager.getBeforeNews(date);

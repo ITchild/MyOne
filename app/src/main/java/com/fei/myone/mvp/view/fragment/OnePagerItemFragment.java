@@ -30,13 +30,11 @@ public class OnePagerItemFragment extends BaseFragment implements OnePagerItemFr
 
     @Bind(R.id.onePagerItem_dis_xRv)
     XRecyclerView onePagerItem_dis_xRv;
-    @Bind(R.id.onePagerItemFragment_tv)
-    TextView onePagerItemFragment_tv;
 
     @Inject
     OnePagerItemFragmentPersenter onePagerItemFragmentPersenter;
 
-    private String date;
+    private String date = "0";
 
     private OnePagerItemAdapter onePagerItemAdapter;
 
@@ -57,12 +55,11 @@ public class OnePagerItemFragment extends BaseFragment implements OnePagerItemFr
 
     @Override
     public void initData() {
-        onePagerItemFragment_tv.setText(date);
-//        if(date.equals("0")) {
+        if(date.equals("0")) {
             onePagerItemFragmentPersenter.getToDayOneList();
-//        }else{
-//
-//        }
+        }else{
+            onePagerItemFragmentPersenter.getDateOneList(date);
+        }
     }
 
     @Override

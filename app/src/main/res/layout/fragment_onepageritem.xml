@@ -4,12 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <TextView
-        android:id="@+id/onePagerItemFragment_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
     <com.jcodecraeer.xrecyclerview.XRecyclerView
         android:id="@+id/onePagerItem_dis_xRv"
         android:layout_width="match_parent"

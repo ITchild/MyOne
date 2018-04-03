@@ -18,6 +18,7 @@ public abstract class OnePagerItemFragmentContract  {
 
     public interface Persenter extends BasePersenter<View>{
         void getToDayOneList();
+        void getDateOneList(String date);
     }
 
 }

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/item_oneList_radio_ll"
+    android:background="@color/write">
+
+    <RelativeLayout
+        android:id="@+id/itemoneList_radioToDay_Rl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_200dip">
+        <ImageView
+            android:id="@+id/oneListRadio_iv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@mipmap/default_update_img"/>
+
+        <TextView
+            android:id="@+id/oneListRadio_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/default_textColor"
+            android:textSize="@dimen/tv_15sp"
+            android:gravity="center"
+            tool:text="开播时间"
+            android:layout_marginBottom="@dimen/margin_8dip"
+            android:layout_above="@+id/oneListRadio_flagView"/>
+
+        <View
+            android:id="@+id/oneListRadio_flagView"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dip"
+            android:layout_above="@+id/oneListRadio_buttom_ll"
+            android:background="@color/default_textColor"></View>
+        <LinearLayout
+            android:id="@+id/oneListRadio_buttom_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/margin_8dip"
+            android:layout_marginBottom="@dimen/margin_8dip"
+            android:layout_marginLeft="@dimen/margin_10dip"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/oneListRadio_iv_huan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/voice_fm_00"/>
+            <View
+                android:layout_width="0dip"
+                android:layout_height="1dip"
+                android:layout_weight="1"></View>
+
+            <ImageView
+                android:id="@+id/oneListRadio_laud_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/feeds_laud_default" />
+            <TextView
+                android:id="@+id/oneListRadio_laud_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/margin_20dip"
+                android:text="4321"
+                android:textColor="@color/startUpButtomText"
+                android:textSize="@dimen/margin_8dip" />
+
+            <ImageView
+                android:id="@+id/oneListRadio_share_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/feeds_share" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/itemoneList_radioND_Rl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_200dip">
+        <ImageView
+            android:id="@+id/oneListRadioND_iv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@mipmap/login_head"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_20dip"
+            android:layout_marginTop="@dimen/margin_20dip"
+            android:src="@mipmap/fm_logo_white"/>
+
+        <ImageView
+            android:id="@+id/oneListRadioND_play_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_20dip"
+            android:layout_marginBottom="@dimen/margin_20dip"
+            android:layout_above="@+id/oneListRadio_flagViewND"
+            android:src="@mipmap/songlist_play_white"/>
+
+        <TextView
+            android:id="@+id/oneListRadio_titleND_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/write"
+            android:textSize="@dimen/tv_15sp"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/margin_10dip"
+            tool:text="身无可动，心向远方"
+            android:layout_toRightOf="@+id/oneListRadioND_play_iv"
+            android:layout_marginBottom="@dimen/margin_15dip"
+            android:layout_above="@+id/oneListRadio_flagViewND" />
+        <TextView
+            android:id="@+id/oneListRadio_qiND_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/write"
+            android:textSize="@dimen/oneTitle_2_size"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/margin_10dip"
+            tool:text="第456期"
+            android:layout_toRightOf="@+id/oneListRadioND_play_iv"
+            android:layout_above="@+id/oneListRadio_titleND_tv" />
+
+        <View
+            android:id="@+id/oneListRadio_flagViewND"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dip"
+            android:layout_above="@+id/oneListRadio_buttomND_ll"
+            android:background="@color/default_textColor"></View>
+        <LinearLayout
+            android:id="@+id/oneListRadio_buttomND_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/margin_8dip"
+            android:layout_marginBottom="@dimen/margin_8dip"
+            android:layout_marginLeft="@dimen/margin_10dip"
+            android:orientation="horizontal">
+
+            <com.fei.myone.ui.XCRoundImageView
+                android:id="@+id/oneListRadio_huanND_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/voice_fm_00"/>
+            <TextView
+                android:id="@+id/oneListRadio_huanND_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <View
+                android:layout_width="0dip"
+                android:layout_height="1dip"
+                android:layout_weight="1"></View>
+
+            <ImageView
+                android:id="@+id/oneListRadio_laudND_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/feeds_laud_default" />
+            <TextView
+                android:id="@+id/oneListRadio_laudND_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/margin_20dip"
+                android:text="4321"
+                android:textColor="@color/startUpButtomText"
+                android:textSize="@dimen/margin_8dip" />
+
+            <ImageView
+                android:id="@+id/oneListRadio_shareND_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/feeds_share" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/oneListRadio_befor_iv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_20dip"
+        android:src="@mipmap/feeds_bottom_image"/>
+
+
+</LinearLayout>

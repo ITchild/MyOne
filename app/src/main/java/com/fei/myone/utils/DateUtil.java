@@ -31,4 +31,16 @@ public class DateUtil {
         SimpleDateFormat date = new SimpleDateFormat(format);
         return date.format(new Date(getCurrMill()));
     }
+
+    /**
+     * 得到几天之前的日期
+     * @param format
+     * @param num
+     * @return
+     */
+    public static String getBeforDate(String format,int num){
+        SimpleDateFormat date = new SimpleDateFormat(format);
+        return date.format(new Date(getCurrMill()-(1000*60*60*24*num)));
+    }
+
 }

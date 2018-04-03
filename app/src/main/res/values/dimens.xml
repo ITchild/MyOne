@@ -9,13 +9,21 @@
     <dimen name="margin_4dip">4dip</dimen>
     <dimen name="margin_8dip">8dip</dimen>
     <dimen name="margin_10dip">10dip</dimen>
+    <dimen name="margin_15dip">15dip</dimen>
     <dimen name="margin_20dip">20dip</dimen>
     <dimen name="margin_30dip">30dip</dimen>
+    <dimen name="margin_100dip">100dip</dimen>
+    <dimen name="margin_150dip">150dip</dimen>
+    <dimen name="margin_200dip">200dip</dimen>
+    <dimen name="margin_230dip">230dip</dimen>
 
 
 
     <dimen name="oneTitle_1_size">30sp</dimen>
     <dimen name="oneTitle_2_size">11sp</dimen>
     <dimen name="oneTitle_location_size">13sp</dimen>
+
+    <dimen name="tv_15sp">15sp</dimen>
+    <dimen name="tv_7sp">7sp</dimen>
 
 </resources>

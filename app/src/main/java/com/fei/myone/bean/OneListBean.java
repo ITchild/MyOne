@@ -17,7 +17,45 @@ public class OneListBean implements Parcelable {
     private int like_count;//喜欢的人数
     private String words_info;//文字描述的作者
     private AuthorBean author;//作者的信息
+    private String subtitle;//影视的影评人
+    private String last_update_date;//最后的更新日期
+    private AnswererBean answerer;//问答的回答者的信息
+    private String music_name;//音乐名字
+    private String audio_author;//音乐的作者
+    private String audio_album;//音乐专辑
 
+
+    public String getMusic_name() {
+        return music_name;
+    }
+
+    public void setMusic_name(String music_name) {
+        this.music_name = music_name;
+    }
+
+    public String getAudio_author() {
+        return audio_author;
+    }
+
+    public void setAudio_author(String audio_author) {
+        this.audio_author = audio_author;
+    }
+
+    public String getAudio_album() {
+        return audio_album;
+    }
+
+    public void setAudio_album(String audio_album) {
+        this.audio_album = audio_album;
+    }
+
+    public String getSubtitle() {
+        return subtitle;
+    }
+
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
+    }
 
     public int getContent_type() {
         return content_type;
@@ -83,6 +121,23 @@ public class OneListBean implements Parcelable {
         this.words_info = words_info;
     }
 
+
+    public AnswererBean getAnswerer() {
+        return answerer;
+    }
+
+    public void setAnswerer(AnswererBean answerer) {
+        this.answerer = answerer;
+    }
+
+    public String getLast_update_date() {
+        return last_update_date;
+    }
+
+    public void setLast_update_date(String last_update_date) {
+        this.last_update_date = last_update_date;
+    }
+
     public OneListBean(){
 
     }
@@ -95,6 +150,11 @@ public class OneListBean implements Parcelable {
         like_count = in.readInt();
         words_info = in.readString();
         author = in.readParcelable(AuthorBean.class.getClassLoader());
+        last_update_date = in.readString();
+        subtitle = in.readString();
+        music_name = in.readString();
+        audio_author = in.readString();
+        audio_album = in.readString();
     }
 
 
@@ -113,7 +173,11 @@ public class OneListBean implements Parcelable {
         parcel.writeInt(like_count);
         parcel.writeString(words_info);
         parcel.writeParcelable(author,i);
-
+        parcel.writeString(last_update_date);
+        parcel.writeString(subtitle);
+        parcel.writeString(music_name);
+        parcel.writeString(audio_author);
+        parcel.writeString(audio_album);
     }
 
     public static final Creator<OneListBean> CREATOR = new Creator<OneListBean>() {
