@@ -11,7 +11,7 @@ import com.fei.myone.MyOneApplication;
 public class StringUtils {
 
     public static void ShowLog(String msg){
-        if(MyOneApplication.getmIntent().isDebug()){
+        if(MyOneApplication.getmIntent().isApkDebugable()){
             Log.i("fei_One",msg);
         }
     }

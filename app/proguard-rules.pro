@@ -1,6 +1,6 @@
 # Add project specific ProGuard rules here.
 # By default, the flags in this file are appended to flags specified
-# in D:\SoftWare\AndroidSDK\AndroidSDK/tools/proguard/proguard-android.txt
+# in D:\android-sdk-windows/tools/proguard/proguard-android.txt
 # You can edit the include path and order by changing the proguardFiles
 # directive in build.gradle.
 #
@@ -12,88 +12,77 @@
 # If your project uses WebView with JS, uncomment the following
 # and specify the fully qualified class name to the JavaScript interface
 # class:
--keepclassmembers class fqcn.of.javascript.interface.for.webview {
-   public *;
-}
-#指定代码的压缩级别
+#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+#   public *;
+#}
+# copyright zhonghanwen
+#-------------------------------------------基本不用动区域--------------------------------------------
+#---------------------------------基本指令区----------------------------------
 -optimizationpasses 5
+-dontskipnonpubliclibraryclassmembers
+-printmapping proguardMapping.txt
+-optimizations !code/simplification/cast,!field/*,!class/merging/*
+-keepattributes *Annotation*,InnerClasses
+-keepattributes Signature
+-keepattributes SourceFile,LineNumberTable
+#----------------------------------------------------------------------------
 
-#包明不混合大小写
--dontusemixedcaseclassnames
-
-#不去忽略非公共的库类
--dontskipnonpubliclibraryclasses
-
- #优化  不优化输入的类文件
--dontoptimize
-
- #预校验
--dontpreverify
-
- #混淆时是否记录日志
--verbose
-
- # 混淆时所采用的算法
--optimizations !code/simplification/arithmetic,!field/*,!class/merging/*
-
-#保护注解
--keepattributes *Annotation*
-
-# 保持哪些类不被混淆
--keep public class * extends android.app.Fragment
+#---------------------------------默认保留区---------------------------------
+#继承activity,application,service,broadcastReceiver,contentprovider....不进行混淆
 -keep public class * extends android.app.Activity
 -keep public class * extends android.app.Application
+-keep public class * extends android.support.multidex.MultiDexApplication
 -keep public class * extends android.app.Service
 -keep public class * extends android.content.BroadcastReceiver
 -keep public class * extends android.content.ContentProvider
 -keep public class * extends android.app.backup.BackupAgentHelper
 -keep public class * extends android.preference.Preference
+-keep public class * extends android.view.View
 -keep public class com.android.vending.licensing.ILicensingService
-#如果有引用v4包可以添加下面这行
--keep public class * extends android.support.v4.app.Fragment
+-keep class android.support.** {*;}
 
-
-#忽略警告
--ignorewarning
-
-##记录生成的日志数据,gradle build时在本项目根目录输出##
-#apk 包内所有 class 的内部结构
--dump proguard/class_files.txt
-#未混淆的类和成员
--printseeds proguard/seeds.txt
-#列出从 apk 中删除的代码
--printusage proguard/unused.txt
-#混淆前后的映射
--printmapping proguard/mapping.txt
-########记录生成的日志数据，gradle build时 在本项目根目录输出-end######
-
-#如果引用了v4或者v7包
--dontwarn android.support.**
-
-####混淆保护自己项目的部分代码以及引用的第三方jar包library-end####
-
-
-
-#保持 native 方法不被混淆
--keepclasseswithmembernames class * {
-    native <methods>;
+-keep public class * extends android.view.View{
+    *** get*();
+    void set*(***);
+    public <init>(android.content.Context);
+    public <init>(android.content.Context, android.util.AttributeSet);
+    public <init>(android.content.Context, android.util.AttributeSet, int);
 }
-
-#保持自定义控件类不被混淆
 -keepclasseswithmembers class * {
     public <init>(android.content.Context, android.util.AttributeSet);
+    public <init>(android.content.Context, android.util.AttributeSet, int);
 }
-
-#保持自定义控件类不被混淆
+#这个主要是在layout 中写的onclick方法android:onclick="onClick"，不进行混淆
 -keepclassmembers class * extends android.app.Activity {
    public void *(android.view.View);
 }
 
--keep public class * extends android.view.View {
-    public <init>(android.content.Context);
-    public <init>(android.content.Context, android.util.AttributeSet);
-    public <init>(android.content.Context, android.util.AttributeSet, int);
-    public void set*(...);
+-keepclassmembers class * implements java.io.Serializable {
+    static final long serialVersionUID;
+    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+}
+-keep class **.R$* {
+ *;
+}
+
+-keepclassmembers class * {
+    void *(*Event);
+}
+
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+-keep class * implements android.os.Parcelable {
+  public static final android.os.Parcelable$Creator *;
+}
+#// natvie 方法不混淆
+-keepclasseswithmembernames class * {
+    native <methods>;
 }
 
 #保持 Parcelable 不被混淆
@@ -101,106 +90,403 @@
   public static final android.os.Parcelable$Creator *;
 }
 
-#保持 Serializable 不被混淆
--keepnames class * implements java.io.Serializable
+#----------------------------------------------------------------------------
 
-#保持 Serializable 不被混淆并且enum 类也不被混淆
+#---------------------------------webview------------------------------------
+-keepclassmembers class fqcn.of.javascript.interface.for.Webview {
+   public *;
+}
+-keepclassmembers class * extends android.webkit.WebViewClient {
+    public void *(android.webkit.WebView, java.lang.String, android.graphics.Bitmap);
+    public boolean *(android.webkit.WebView, java.lang.String);
+}
+-keepclassmembers class * extends android.webkit.WebViewClient {
+    public void *(android.webkit.WebView, jav.lang.String);
+}
+#----------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------
+#---------------------------------实体类---------------------------------
+#修改成你对应的包名
+-keep class [your_pkg].** { *; }
+
+#---------------------------------第三方包-------------------------------
+
+#支付宝支付
+-keep class com.alipay.android.app.IAlixPay{*;}
+-keep class com.alipay.android.app.IAlixPay$Stub{*;}
+-keep class com.alipay.android.app.IRemoteServiceCallback{*;}
+-keep class com.alipay.android.app.IRemoteServiceCallback$Stub{*;}
+-keep class com.alipay.sdk.app.PayTask{ public *;}
+-keep class com.alipay.sdk.app.AuthTask{ public *;}
+-keep public class * extends android.os.IInterface
+#微信支付
+-keep class com.tencent.mm.sdk.openapi.WXMediaMessage {*;}
+-keep class com.tencent.mm.sdk.openapi.** implements com.tencent.mm.sdk.openapi.WXMediaMessage$IMediaObject {*;}
+-keep class com.tencent.wxop.** { *; }
+-dontwarn com.tencent.mm.**
+-keep class com.tencent.mm.**{*;}
+-keepclasseswithmembernames class ** {
+}
+-keepattributes Signature
+
+-keep class sun.misc.Unsafe { *; }
+
+-keep class com.taobao.** {*;}
+-keep class com.alibaba.** {*;}
+-keep class com.alipay.** {*;}
+-dontwarn com.taobao.**
+-dontwarn com.alibaba.**
+-dontwarn com.alipay.**
+
+-keep class com.ut.** {*;}
+-dontwarn com.ut.**
+
+-keep class com.ta.** {*;}
+-dontwarn com.ta.**
+
+-keep class anet.**{*;}
+-keep class org.android.spdy.**{*;}
+-keep class org.android.agoo.**{*;}
+-dontwarn anet.**
+-dontwarn org.android.spdy.**
+-dontwarn org.android.agoo.**
+
+-keepclasseswithmembernames class com.xiaomi.**{*;}
+-keep public class * extends com.xiaomi.mipush.sdk.PushMessageReceiver
+
+-dontwarn com.xiaomi.push.service.b
+
+-keep class org.apache.http.**
+-keep interface org.apache.http.**
+-dontwarn org.apache.**
+
+#okhttp3.x
+-dontwarn com.squareup.okhttp3.**
+-keep class com.squareup.okhttp3.** { *;}
+-dontwarn okio.**
+#sharesdk
+-keep class cn.sharesdk.**{*;}
+-keep class com.sina.**{*;}
+-keep class **.R$* {*;}
+-keep class **.R{*;}
+
+-keep class com.mob.**{*;}
+-dontwarn com.mob.**
+-dontwarn cn.sharesdk.**
+-dontwarn **.R$*
+
+## nineoldandroids-2.4.0.jar
+-keep public class com.nineoldandroids.** {*;}
+
+####################zxing#####################
+-keep class com.google.zxing.** {*;}
+-dontwarn com.google.zxing.**
+##百度定位
+-keep class com.baidu.** {*;}
+-keep class vi.com.** {*;}
+-dontwarn com.baidu.**
+
+## okhttp
+-dontwarn com.squareup.okhttp.**
+-keep class com.squareup.okhttp.{*;}
+#retrofit
+-dontwarn retrofit.**
+-keep class retrofit.** { *; }
+-keepattributes Signature
+-keepattributes Exceptions
+-dontwarn okio.**
+
+#recyclerview-animators
+-keep class jp.wasabeef.** {*;}
+-dontwarn jp.wasabeef.*
+
+#multistateview
+-keep class com.kennyc.view.** { *; }
+-dontwarn com.kennyc.view.*
+
+# universal-image-loader 混淆
+-dontwarn com.nostra13.universalimageloader.**
+-keep class com.nostra13.universalimageloader.** { *; }
+
+#ormlite
+-keep class com.j256.**
+-keepclassmembers class com.j256.** { *; }
+-keep enum com.j256.**
+-keepclassmembers enum com.j256.** { *; }
+-keep interface com.j256.**
+-keepclassmembers interface com.j256.** { *; }
+#umeng
+# ========= 友盟 =================
+-dontshrink
+-dontoptimize
+-dontwarn com.google.android.maps.**
+-dontwarn android.webkit.WebView
+-dontwarn com.umeng.**
+-dontwarn com.tencent.weibo.sdk.**
+-dontwarn com.facebook.**
+
+
+-keep enum com.facebook.**
+-keepattributes Exceptions,InnerClasses,Signature
+-keepattributes *Annotation*
+-keepattributes SourceFile,LineNumberTable
+
+-keep public interface com.facebook.**
+-keep public interface com.tencent.**
+-keep public interface com.umeng.socialize.**
+-keep public interface com.umeng.socialize.sensor.**
+-keep public interface com.umeng.scrshot.**
+
+-keep public class com.umeng.socialize.* {*;}
+-keep public class javax.**
+-keep public class android.webkit.**
+
+-keep class com.facebook.**
+-keep class com.umeng.scrshot.**
+-keep public class com.tencent.** {*;}
+-keep class com.umeng.socialize.sensor.**
+
+-keep class com.tencent.mm.sdk.modelmsg.WXMediaMessage {*;}
+
+-keep class com.tencent.mm.sdk.modelmsg.** implements com.tencent.mm.sdk.modelmsg.WXMediaMessage$IMediaObject {*;}
+
+-keep class im.yixin.sdk.api.YXMessage {*;}
+-keep class im.yixin.sdk.api.** implements im.yixin.sdk.api.YXMessage$YXMessageData{*;}
+#下面中括号的地方需要要填你的包名
+-keep public class [your_pkg].R$*{
+    public static final int *;
+}
+-keepclassmembers class * {
+   public <init> (org.json.JSONObject);
+}
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+#友盟自动更新
+-keep public class com.umeng.fb.ui.ThreadView {
+}
+-keep public class * extends com.umeng.**
+# 以下包不进行过滤
+-keep class com.umeng.** { *; }
+
+
+#-ButterKnife 7.0
+ -keep class butterknife.** { *; }
+ -dontwarn butterknife.internal.**
+ -keep class **$$ViewBinder { *; }
+ -keepclasseswithmembernames class * {
+  @butterknife.* <fields>;
+ }
+ -keepclasseswithmembernames class * {
+ @butterknife.* <methods>;
+ }
+
+
+#AndFix
+-keep class * extends java.lang.annotation.Annotation
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+
+#eventbus 3.0
+-keepattributes *Annotation*
+-keepclassmembers class ** {
+    @org.greenrobot.eventbus.Subscribe <methods>;
+}
+-keep enum org.greenrobot.eventbus.ThreadMode { *; }
+-keepclassmembers class * extends org.greenrobot.eventbus.util.ThrowableFailureEvent {
+    <init>(java.lang.Throwable);
+}
+
+
+#EventBus
+-keepclassmembers class ** {
+    public void onEvent*(**);
+}
+-keepclassmembers class ** {
+public void xxxxxx(**);
+}
+
+
+################gson##################
+-keep class com.google.gson.** {*;}
+-keep class com.google.**{*;}
+-keep class sun.misc.Unsafe { *; }
+-keep class com.google.gson.stream.** { *; }
+-keep class com.google.gson.examples.android.model.** { *; }
+
 -keepclassmembers class * implements java.io.Serializable {
     static final long serialVersionUID;
     private static final java.io.ObjectStreamField[] serialPersistentFields;
-    !static !transient <fields>;
-    !private <fields>;
-    !private <methods>;
     private void writeObject(java.io.ObjectOutputStream);
     private void readObject(java.io.ObjectInputStream);
     java.lang.Object writeReplace();
     java.lang.Object readResolve();
 }
+-keep public class * implements java.io.Serializable {*;}
 
-#保持枚举 enum 类不被混淆
--keepclassmembers enum * {
-  public static **[] values();
-  public static ** valueOf(java.lang.String);
+
+# support-v4
+#https://stackoverflow.com/questions/18978706/obfuscate-android-support-v7-widget-gridlayout-issue
+-dontwarn android.support.v4.**
+-keep class android.support.v4.app.** { *; }
+-keep interface android.support.v4.app.** { *; }
+-keep class android.support.v4.** { *; }
+
+
+# support-v7
+-dontwarn android.support.v7.**
+-keep class android.support.v7.internal.** { *; }
+-keep interface android.support.v7.internal.** { *; }
+-keep class android.support.v7.** { *; }
+
+# support design
+#@link http://stackoverflow.com/a/31028536
+-dontwarn android.support.design.**
+-keep class android.support.design.** { *; }
+-keep interface android.support.design.** { *; }
+-keep public class android.support.design.R$* { *; }
+#-------------------------------------------------------------------------
+
+# picasso
+-keep class com.squareup.picasso.** {*; }
+-dontwarn com.squareup.picasso.**
+
+#glide
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
 }
 
--keepclassmembers class * {
-    public void *ButtonClicked(android.view.View);
+# #  ######## greenDao混淆  ##########
+# # -------------------------------------------
+-keep class de.greenrobot.dao.** {*;}
+-keepclassmembers class * extends de.greenrobot.dao.AbstractDao {
+    public static Java.lang.String TABLENAME;
+}
+-keep class **$Properties
+# #  ############### volley混淆  ###############
+# # -------------------------------------------
+-keep class com.android.volley.** {*;}
+-keep class com.android.volley.toolbox.** {*;}
+-keep class com.android.volley.Response$* { *; }
+-keep class com.android.volley.Request$* { *; }
+-keep class com.android.volley.RequestQueue$* { *; }
+-keep class com.android.volley.toolbox.HurlStack$* { *; }
+-keep class com.android.volley.toolbox.ImageLoader$* { *; }
+
+#jpush极光推送
+-dontwarn cn.jpush.**
+-keep class cn.jpush.** { *; }
+
+#activeandroid
+-keep class com.activeandroid.** { *; }
+-dontwarn com.ikoding.app.biz.dataobject.**
+-keep public class com.ikoding.app.biz.dataobject.** { *;}
+-keepattributes *Annotation*
+
+#log4j
+-dontwarn org.apache.log4j.**
+-keep class  org.apache.log4j.** { *;}
+#下面几行 是环信即时通信的代码混淆
+-keep class com.easemob.** {*;}
+-keep class org.jivesoftware.** {*;}
+-dontwarn  com.easemob.**
+
+#融云
+-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+ public *;
 }
 
-#不混淆资源类
--keepclassmembers class **.R$* {
-    public static <fields>;
-}
+-keepattributes Exceptions,InnerClasses
 
-#避免混淆泛型 如果混淆报错建议关掉
+-keep class io.rong.** {*;}
+
+-keep class * implements io.rong.imlib.model.MessageContent{*;}
+
 -keepattributes Signature
 
-#移除Log类打印各个等级日志的代码，打正式包的时候可以做为禁log使用，这里可以作为禁止log打印的功能使用，另外的一种实现方案是通过BuildConfig.DEBUG的变量来控制
-#-assumenosideeffects class android.util.Log {
-#    public static *** v(...);
-#    public static *** i(...);
-#    public static *** d(...);
-#    public static *** w(...);
-#    public static *** e(...);
-#}
+-keepattributes *Annotation*
 
-#############################################################################################
-########################                 以上通用           ##################################
-#############################################################################################
-
-#######################     常用第三方模块的混淆选项         ###################################
-#gson
-#如果用用到Gson解析包的，直接添加下面这几行就能成功混淆，不然会报错。
--keepattributes Signature
-# Gson specific classes
 -keep class sun.misc.Unsafe { *; }
-# Application classes that will be serialized/deserialized over Gson
--keep class com.google.gson.** { *; }
--keep class com.google.gson.stream.** { *; }
 
-#mob
--keep class android.net.http.SslError
--keep class android.webkit.**{*;}
--keep class cn.sharesdk.**{*;}
--keep class com.sina.**{*;}
--keep class m.framework.**{*;}
+-keep class com.google.gson.examples.android.model.** { *; }
+
+-keepclassmembers class * extends com.sea_monster.dao.AbstractDao {
+ public static java.lang.String TABLENAME;
+}
+-keep class **$Properties
+-dontwarn org.eclipse.jdt.annotation.**
+
+-keep class com.ultrapower.** {*;}
+#高徳地图
+-dontwarn com.amap.api.**
+-dontwarn com.a.a.**
+-dontwarn com.autonavi.**
+-keep class com.amap.api.**  {*;}
+-keep class com.autonavi.**  {*;}
+-keep class com.a.a.**  {*;}
+#---------------------------------反射相关的类和方法-----------------------
+#在这下面写反射相关的类和方法，没有就不用写！
+
+
+
+
+#---------------------------------与js互相调用的类------------------------
+#在这下面写与js互相调用的类，没有就去掉这句话！
+
+#---------------------------------自定义View的类------------------------
+#在这下面写自定义View的类的类，没有就去掉这句话！
+
+
+#SuperID
+#由*郭宇翔*贡献混淆代码
+#作者Github地址：https://github.com/yourtion
 -keep class **.R$* {*;}
--keep class **.R{*;}
--dontwarn cn.sharesdk.**
--dontwarn **.R$*
+-keep class com.isnc.facesdk.aty.**{*;}
+-keep class com.isnc.facesdk.**{*;}
+-keep class com.isnc.facesdk.common.**{*;}
+-keep class com.isnc.facesdk.net.**{*;}
+-keep class com.isnc.facesdk.view.**{*;}
+-keep class com.isnc.facesdk.viewmodel.**{*;}
+-keep class com.matrixcv.androidapi.face.**{*;}
 
-#butterknife
--keep class butterknife.** { *; }
--dontwarn butterknife.internal.**
--keep class **$$ViewBinder { *; }
+#retrofit2.x
+-dontwarn retrofit2.**
+-keep class retrofit2.** { *; }
+-keepattributes Signature
+-keepattributes Exceptions
 
--keepclasseswithmembernames class * {
-    @butterknife.* <fields>;
+#Rxjava RxAndroid
+-dontwarn rx.*
+-dontwarn sun.misc.**
+
+-keepclassmembers class rx.internal.util.unsafe.*ArrayQueue*Field* {
+   long producerIndex;
+   long consumerIndex;
 }
 
--keepclasseswithmembernames class * {
-    @butterknife.* <methods>;
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
+    rx.internal.util.atomic.LinkedQueueNode producerNode;
 }
 
-######引用的其他Module可以直接在app的这个混淆文件里配置
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueConsumerNodeRef {
+    rx.internal.util.atomic.LinkedQueueNode consumerNode;
+}
 
-# 如果使用了Gson之类的工具要使被它解析的JavaBean类即实体类不被混淆。
--keep class com.matrix.app.entity.json.** { *; }
--keep class com.matrix.appsdk.network.model.** { *; }
 
-#####混淆保护自己项目的部分代码以及引用的第三方jar包library#######
-#如果在当前的application module或者依赖的library module中使用了第三方的库，并不需要显式添加规则
-#-libraryjars xxx
-#添加了反而有可能在打包的时候遭遇同一个jar多次被指定的错误，一般只需要添加忽略警告和保持某些class不被混淆的声明。
-#以libaray的形式引用了开源项目,如果不想混淆 keep 掉，在引入的module的build.gradle中设置minifyEnabled=false
--keep class com.nineoldandroids.** { *; }
--keep interface com.nineoldandroids.** { *; }
--dontwarn com.nineoldandroids.**
-# 下拉刷新
--keep class in.srain.cube.** { *; }
--keep interface in.srain.cube.** { *; }
--dontwarn in.srain.cube.**
-# observablescrollview：tab fragment
--keep class com.github.ksoichiro.** { *; }
--keep interface com.github.ksoichiro.** { *; }
--dontwarn com.github.ksoichiro.**
+#litepal
+-dontwarn org.litepal.
+-keep class org.litepal.* { ; }
+-keep enum org.litepal.*
+-keep interface org.litepal.* { ; }
+-keep public class  extends org.litepal.
+-keepattributes Annotation
+-keepclassmembers class  extends org.litepal.crud.DataSupport{ ; }
+
+#fastJson
+-dontwarn com.alibaba.fastjson.**
+-keep class com.alibaba.fastjson.** { *; }
