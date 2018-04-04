@@ -2,16 +2,24 @@ package com.fei.myone.mvp.view;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 
 import com.fei.myone.BaseActivity;
 import com.fei.myone.R;
+import com.fei.myone.bean.EventBusMsgBean;
 import com.fei.myone.db.DB_Server;
 import com.fei.myone.di.component.DaggerMainComponent;
 import com.fei.myone.di.moudel.MainMoudel;
 import com.fei.myone.mvp.contract.MainContract;
 import com.fei.myone.mvp.persenter.MainPersenter;
+import com.fei.myone.utils.Constant;
 import com.fei.myone.utils.StatusBarUtils;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import javax.inject.Inject;
 
@@ -19,6 +27,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity implements MainContract.View{
+
+    @Bind(R.id.main_tabGroupLine_ll)
+    LinearLayout main_tabGroupLine_ll;
 
     @Bind(R.id.main_tabGroup_rg)
     RadioGroup main_tabGroup_rg;
@@ -36,8 +47,21 @@ public class MainActivity extends BaseActivity implements MainContract.View{
     @Override
     public void initView() {
         ButterKnife.bind(this);
+        EventBus.getDefault().register(this);
         StatusBarUtils.setStatusBarLightMode(getWindow());
         mainPersenter.attachView(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void mainEvent(EventBusMsgBean busMsgBean){
+        switch (busMsgBean.getFlag()){
+            case Constant.DISAPPEARBUTTOMTAB ://底部的Tab消失
+                main_tabGroupLine_ll.setVisibility(View.GONE);
+                break;
+            case Constant.APPEARBUTTOMTAB ://底部的Tab出现
+                main_tabGroupLine_ll.setVisibility(View.VISIBLE);
+                break;
+        }
     }
 
     @Override
@@ -92,6 +116,7 @@ public class MainActivity extends BaseActivity implements MainContract.View{
     protected void onDestroy() {
         super.onDestroy();
         mainPersenter.detachView();
+        EventBus.getDefault().unregister(this);
     }
 
 }

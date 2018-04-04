@@ -18,11 +18,13 @@ public abstract class OneFragmentContract {
     public interface View extends BaseView{
         void getInitFragments(List<Fragment> fragments);
         void addFragment(List<Fragment> fragments);
+        void setDate(String date1,String date2);
 
     }
 
     public interface Persenter extends BasePersenter<View>{
         void getInitFragments();
         void addFragment(int position);
+        void getDate(int position);
     }
 }

@@ -11,6 +11,7 @@
     <dimen name="margin_10dip">10dip</dimen>
     <dimen name="margin_15dip">15dip</dimen>
     <dimen name="margin_20dip">20dip</dimen>
+    <dimen name="margin_25dip">25dip</dimen>
     <dimen name="margin_30dip">30dip</dimen>
     <dimen name="margin_100dip">100dip</dimen>
     <dimen name="margin_150dip">150dip</dimen>

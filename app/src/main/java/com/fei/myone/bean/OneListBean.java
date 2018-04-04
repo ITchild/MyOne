@@ -23,7 +23,25 @@ public class OneListBean implements Parcelable {
     private String music_name;//音乐名字
     private String audio_author;//音乐的作者
     private String audio_album;//音乐专辑
+    private int is_regular;//电台是否开播
+    private String volume;//电台第几期
 
+
+    public String getVolume() {
+        return volume;
+    }
+
+    public void setVolume(String volume) {
+        this.volume = volume;
+    }
+
+    public int getIs_regular() {
+        return is_regular;
+    }
+
+    public void setIs_regular(int is_regular) {
+        this.is_regular = is_regular;
+    }
 
     public String getMusic_name() {
         return music_name;
@@ -155,6 +173,8 @@ public class OneListBean implements Parcelable {
         music_name = in.readString();
         audio_author = in.readString();
         audio_album = in.readString();
+        is_regular = in.readInt();
+        volume = in.readString();
     }
 
 
@@ -178,6 +198,8 @@ public class OneListBean implements Parcelable {
         parcel.writeString(music_name);
         parcel.writeString(audio_author);
         parcel.writeString(audio_album);
+        parcel.writeInt(is_regular);
+        parcel.writeString(volume);
     }
 
     public static final Creator<OneListBean> CREATOR = new Creator<OneListBean>() {

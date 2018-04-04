@@ -1,19 +1,26 @@
 package com.fei.myone.mvp.view.fragment;
 
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import com.fei.myone.BaseFragment;
 import com.fei.myone.R;
+import com.fei.myone.bean.EventBusMsgBean;
 import com.fei.myone.bean.OneListBean;
+import com.fei.myone.bean.WeatherBean;
 import com.fei.myone.di.component.DaggerOnePagerItemFragmentComponent;
 import com.fei.myone.di.moudel.OnePagerItemFragmentMoudel;
 import com.fei.myone.mvp.contract.OnePagerItemFragmentContract;
 import com.fei.myone.mvp.persenter.OnePagerItemFragmentPersenter;
 import com.fei.myone.mvp.view.fragment.adapter.OnePagerItemAdapter;
+import com.fei.myone.utils.Constant;
+import com.fei.myone.utils.StringUtils;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -35,6 +42,8 @@ public class OnePagerItemFragment extends BaseFragment implements OnePagerItemFr
     OnePagerItemFragmentPersenter onePagerItemFragmentPersenter;
 
     private String date = "0";
+    private int recycleViewDistance = 0;
+    private boolean isButtonTab = true;
 
     private OnePagerItemAdapter onePagerItemAdapter;
 
@@ -64,7 +73,25 @@ public class OnePagerItemFragment extends BaseFragment implements OnePagerItemFr
 
     @Override
     public void initListener() {
-
+        onePagerItem_dis_xRv.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                recycleViewDistance += dy;
+                if(recycleViewDistance > 300 && !isButtonTab){
+                    EventBusMsgBean eventBusMsgBean = new EventBusMsgBean();
+                    eventBusMsgBean.setFlag(Constant.APPEARBUTTOMTAB);
+                    EventBus.getDefault().post(eventBusMsgBean);
+                    isButtonTab = true;
+                }
+                if(recycleViewDistance <300 && isButtonTab){
+                    EventBusMsgBean eventBusMsgBean = new EventBusMsgBean();
+                    eventBusMsgBean.setFlag(Constant.DISAPPEARBUTTOMTAB);
+                    EventBus.getDefault().post(eventBusMsgBean);
+                    isButtonTab = false;
+                }
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
     }
 
     @Override
@@ -86,5 +113,16 @@ public class OnePagerItemFragment extends BaseFragment implements OnePagerItemFr
         onePagerItem_dis_xRv.setRefreshing(true);
 
         onePagerItem_dis_xRv.setAdapter(onePagerItemAdapter);
+
+    }
+
+    @Override
+    public void getToDayWeather(WeatherBean weatherBean) {
+        //发送天气的信息
+        EventBusMsgBean eventBusMsgBean = new EventBusMsgBean();
+        eventBusMsgBean.setFlag(Constant.WEATHERFLAG);
+        eventBusMsgBean.setLocation(weatherBean.getCity_name());
+        eventBusMsgBean.setTemputure(weatherBean.getTemperature());
+        EventBus.getDefault().post(eventBusMsgBean);
     }
 }

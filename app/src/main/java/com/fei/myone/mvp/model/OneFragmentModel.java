@@ -47,5 +47,9 @@ public class OneFragmentModel {
         return fragments;
     }
 
+    public String getDate(int position){
+        String date = DateUtil.getOneTopDateString("yyyy-MM-dd",position);
+        return date;
+    }
 
 }

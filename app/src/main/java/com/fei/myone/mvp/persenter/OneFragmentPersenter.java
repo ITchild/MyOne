@@ -33,6 +33,13 @@ public class OneFragmentPersenter implements OneFragmentContract.Persenter{
         view.addFragment(oneFragmentModel.addFragment(position));
     }
 
+    @Override
+    public void getDate(int position) {
+        String date = oneFragmentModel.getDate(position);
+        String[] dateArr = date.split(",");
+        view.setDate(dateArr[0],dateArr[1]);
+    }
+
 
     @Override
     public void attachView(@NonNull OneFragmentContract.View view) {

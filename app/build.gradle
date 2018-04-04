@@ -47,7 +47,10 @@ dependencies {
     compile 'io.reactivex:rxjava:1.1.5'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
-
+    //可刷新加载的RecyclerView
     compile project(':xrecyclerview')
+
+    //EventBus的依赖
+    compile 'org.greenrobot:eventbus:3.0.0'
 
 }

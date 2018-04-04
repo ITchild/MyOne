@@ -91,14 +91,31 @@ public class OnePagerItemAdapter extends RecyclerView.Adapter<OnePagerItemAdapte
         holder.item_oneList_Article_ll.setVisibility(View.GONE);
         holder.item_oneList_music_ll.setVisibility(View.GONE);
         holder.item_oneList_radio_ll.setVisibility(View.VISIBLE);
-
         String img_url = oneListBean.getImg_url();
-        if(img_url != null){
-            Glide.with(mContext).load(img_url).placeholder(R.mipmap.default_update_img).into(holder.oneListRadio_iv);
-        }
+        if(oneListBean.getIs_regular() == 2){//未开播
+            holder.itemoneList_radioToDay_Rl.setVisibility(View.VISIBLE);
+            holder.itemoneList_radioND_Rl.setVisibility(View.GONE);
+            if(img_url != null){
+                Glide.with(mContext).load(img_url).placeholder(R.mipmap.default_update_img).into(holder.oneListRadio_iv);
+            }
+            holder.oneListRadio_title_tv.setText(oneListBean.getTitle());
+            holder.oneListRadio_laud_tv.setText(oneListBean.getLike_count() + "");
 
-        holder.oneListRadio_title_tv.setText(oneListBean.getTitle());
-        holder.oneListRadio_laud_tv.setText(oneListBean.getLike_count() + "");
+        }else{//已开播
+            holder.itemoneList_radioToDay_Rl.setVisibility(View.GONE);
+            holder.itemoneList_radioND_Rl.setVisibility(View.VISIBLE);
+            if(img_url != null){
+                Glide.with(mContext).load(img_url).placeholder(R.mipmap.default_update_img).into(holder.oneListRadioND_iv);
+            }
+            holder.oneListRadio_titleND_tv.setText(oneListBean.getTitle());
+            holder.oneListRadio_qiND_tv.setText(oneListBean.getVolume());
+            String author_url = oneListBean.getAuthor().getWeb_url();
+            if(author_url != null){
+                Glide.with(mContext).load(author_url).placeholder(R.mipmap.default_update_img).into(holder.oneListRadio_huanND_iv);
+            }
+            holder.oneListRadio_huanND_tv.setText(oneListBean.getAuthor().getUser_name());
+            holder.oneListRadio_laudND_tv.setText(oneListBean.getLike_count()+"");
+        }
     }
 
     /**
@@ -267,6 +284,8 @@ public class OnePagerItemAdapter extends RecyclerView.Adapter<OnePagerItemAdapte
         /****************电台的布局*******************/
         @Bind(R.id.item_oneList_radio_ll)
         LinearLayout item_oneList_radio_ll;
+        @Bind(R.id.itemoneList_radioToDay_Rl)
+        RelativeLayout itemoneList_radioToDay_Rl;
         @Bind(R.id.oneListRadio_iv)
         ImageView oneListRadio_iv;
         @Bind(R.id.oneListRadio_title_tv)
@@ -275,6 +294,21 @@ public class OnePagerItemAdapter extends RecyclerView.Adapter<OnePagerItemAdapte
         ImageView oneListRadio_iv_huan;
         @Bind(R.id.oneListRadio_laud_tv)
         TextView oneListRadio_laud_tv;
+        //已经播过的电台
+        @Bind(R.id.itemoneList_radioND_Rl)
+        RelativeLayout itemoneList_radioND_Rl;
+        @Bind(R.id.oneListRadioND_iv)
+        ImageView oneListRadioND_iv;
+        @Bind(R.id.oneListRadio_titleND_tv)
+        TextView oneListRadio_titleND_tv;
+        @Bind(R.id.oneListRadio_qiND_tv)
+        TextView oneListRadio_qiND_tv;
+        @Bind(R.id.oneListRadio_huanND_iv)
+        XCRoundImageView oneListRadio_huanND_iv;
+        @Bind(R.id.oneListRadio_huanND_tv)
+        TextView oneListRadio_huanND_tv;
+        @Bind(R.id.oneListRadio_laudND_tv)
+        TextView oneListRadio_laudND_tv;
 
 
         public NewsViewHolder(View itemView) {

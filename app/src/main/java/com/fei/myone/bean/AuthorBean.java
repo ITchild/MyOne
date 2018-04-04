@@ -12,6 +12,15 @@ public class AuthorBean implements Parcelable{
     private String user_name;
     private String desc;
     private String summary;
+    private String web_url;
+
+    public String getWeb_url() {
+        return web_url;
+    }
+
+    public void setWeb_url(String web_url) {
+        this.web_url = web_url;
+    }
 
     public String getUser_name() {
         return user_name;
@@ -45,6 +54,7 @@ public class AuthorBean implements Parcelable{
         this.user_name = in.readString();
         this.desc = in.readString();
         this.summary = in.readString();
+        this.web_url = in.readString();
     }
 
 
@@ -58,6 +68,7 @@ public class AuthorBean implements Parcelable{
         parcel.writeString(user_name);
         parcel.writeString(desc);
         parcel.writeString(summary);
+        parcel.writeString(web_url);
     }
 
     public static final Creator<AuthorBean> CREATOR = new Creator<AuthorBean>() {

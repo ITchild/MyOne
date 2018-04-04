@@ -10,7 +10,16 @@ import android.os.Parcelable;
 public class OneDataBean implements Parcelable {
     private OneContListBean data;
     private int res = -1;
+    private WeatherBean weather;
 
+
+    public WeatherBean getWeather() {
+        return weather;
+    }
+
+    public void setWeather(WeatherBean weather) {
+        this.weather = weather;
+    }
 
     public int getRes() {
         return res;
@@ -34,7 +43,7 @@ public class OneDataBean implements Parcelable {
     protected OneDataBean(Parcel in){
         this.res = in.readInt();
         this.data = in.readParcelable(OneDataBean.class.getClassLoader());
-
+        this.weather = in.readParcelable(WeatherBean.class.getClassLoader());
     }
 
     @Override
@@ -46,7 +55,7 @@ public class OneDataBean implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(this.res);
         dest.writeParcelable(this.data,flags);
-
+        dest.writeParcelable(this.weather,flags);
     }
     public static final Creator<OneDataBean> CREATOR = new Creator<OneDataBean>() {
         public OneDataBean createFromParcel(Parcel source) {

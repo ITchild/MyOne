@@ -141,6 +141,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
             android:layout_marginTop="@dimen/margin_8dip"
             android:layout_marginBottom="@dimen/margin_8dip"
             android:layout_marginLeft="@dimen/margin_10dip"
@@ -148,13 +149,17 @@
 
             <com.fei.myone.ui.XCRoundImageView
                 android:id="@+id/oneListRadio_huanND_iv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/margin_25dip"
+                android:layout_height="@dimen/margin_25dip"
                 android:src="@mipmap/voice_fm_00"/>
             <TextView
                 android:id="@+id/oneListRadio_huanND_tv"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/tv_15sp"
+                android:textColor="@color/startUpButtomText"
+                android:layout_marginLeft="@dimen/margin_4dip"
+                tool:text="马晓" />
             <View
                 android:layout_width="0dip"
                 android:layout_height="1dip"

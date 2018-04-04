@@ -43,4 +43,49 @@ public class DateUtil {
         return date.format(new Date(getCurrMill()-(1000*60*60*24*num)));
     }
 
+    public static String getOneTopDateString(String format,int num){
+        SimpleDateFormat date = new SimpleDateFormat(format);
+        String dateString = date.format(new Date(getCurrMill()-(1000*60*60*24*num)));
+        String [] dateArr = dateString.split("-");
+        switch (Integer.parseInt(dateArr[1])){
+            case 1 :
+                dateArr[1] = "Jan";
+                break;
+            case 2 :
+                dateArr[1] = "Feb";
+                break;
+            case 3 :
+                dateArr[1] = "Mar";
+                break;
+            case 4 :
+                dateArr[1] = "Apr";
+                break;
+            case 5 :
+                dateArr[1] = "May";
+                break;
+            case 6 :
+                dateArr[1] = "June";
+                break;
+            case 7 :
+                dateArr[1] = "July";
+                break;
+            case 8 :
+                dateArr[1] = "Aug";
+                break;
+            case 9 :
+                dateArr[1] = "Sept";
+                break;
+            case 10 :
+                dateArr[1] = "Oct";
+                break;
+            case 11 :
+                dateArr[1] = "Nov";
+                break;
+            case 12 :
+                dateArr[1] = "Dec";
+                break;
+        }
+        return dateArr[2]+","+dateArr[1]+"."+dateArr[0];
+    }
+
 }
