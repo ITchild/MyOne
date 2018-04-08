@@ -3,7 +3,6 @@ package com.fei.myone.mvp.view.fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.TextView;
 
 import com.fei.myone.BaseFragment;
 import com.fei.myone.R;
@@ -16,9 +15,9 @@ import com.fei.myone.mvp.contract.OnePagerItemFragmentContract;
 import com.fei.myone.mvp.persenter.OnePagerItemFragmentPersenter;
 import com.fei.myone.mvp.view.fragment.adapter.OnePagerItemAdapter;
 import com.fei.myone.utils.Constant;
-import com.fei.myone.utils.StringUtils;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+
 
 import org.greenrobot.eventbus.EventBus;
 
