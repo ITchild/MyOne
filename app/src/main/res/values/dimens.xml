@@ -18,6 +18,8 @@
     <dimen name="margin_200dip">200dip</dimen>
     <dimen name="margin_230dip">230dip</dimen>
 
+    <dimen name="alllist_itemhight">200dip</dimen>
+
 
 
     <dimen name="oneTitle_1_size">30sp</dimen>

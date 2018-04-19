@@ -2,6 +2,7 @@ package com.fei.myone.mvp.view;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
@@ -16,6 +17,7 @@ import com.fei.myone.mvp.contract.MainContract;
 import com.fei.myone.mvp.persenter.MainPersenter;
 import com.fei.myone.utils.Constant;
 import com.fei.myone.utils.StatusBarUtils;
+import com.fei.myone.utils.StringUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -38,6 +40,9 @@ public class MainActivity extends BaseActivity implements MainContract.View{
 
     @Inject
     MainPersenter mainPersenter;
+
+    //退出时的时间
+    private long mExitTime;
 
     @Override
     public int getLayout() {
@@ -110,6 +115,26 @@ public class MainActivity extends BaseActivity implements MainContract.View{
     @Override
     public void setupComponent() {
         DaggerMainComponent.builder().mainMoudel(new MainMoudel(this)).build().Inject(this);
+    }
+
+    //对返回键进行监听
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            exit();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    public void exit() {
+        if ((System.currentTimeMillis() - mExitTime) > 2000) {
+            StringUtils.showToast("再按一次退出");
+            mExitTime = System.currentTimeMillis();
+        } else {
+            finish();
+            System.exit(0);
+        }
     }
 
     @Override

@@ -67,4 +67,6 @@ dependencies {
     compile project(':xrecyclerview')
     //EventBus的依赖
     compile 'org.greenrobot:eventbus:3.0.0'
+    //Banner
+    compile project(':banner')
 }

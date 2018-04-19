@@ -175,6 +175,11 @@
   public *;
 }
 
+# banner 的混淆代码
+-keep class com.youth.banner.** {
+    *;
+ }
+
 #litepal
 -dontwarn org.litepal.*
 -keep class org.litepal.** { *; }
