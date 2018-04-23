@@ -43,6 +43,7 @@ public class OnePagerItemFragment extends BaseFragment implements OnePagerItemFr
     private String date = "0";
     private int recycleViewDistance = 0;
     private boolean isButtonTab = true;
+    private int forntDy = 0;
 
     private OnePagerItemAdapter onePagerItemAdapter;
 
@@ -75,6 +76,9 @@ public class OnePagerItemFragment extends BaseFragment implements OnePagerItemFr
         onePagerItem_dis_xRv.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if(forntDy * dy <0){
+                    recycleViewDistance = 0;
+                }
                 recycleViewDistance += dy;
                 if(recycleViewDistance > 300 && !isButtonTab){
                     EventBusMsgBean eventBusMsgBean = new EventBusMsgBean();
@@ -88,6 +92,7 @@ public class OnePagerItemFragment extends BaseFragment implements OnePagerItemFr
                     EventBus.getDefault().post(eventBusMsgBean);
                     isButtonTab = false;
                 }
+                forntDy = dy;
                 super.onScrolled(recyclerView, dx, dy);
             }
         });
@@ -112,7 +117,6 @@ public class OnePagerItemFragment extends BaseFragment implements OnePagerItemFr
         onePagerItem_dis_xRv.setRefreshing(true);
 
         onePagerItem_dis_xRv.setAdapter(onePagerItemAdapter);
-
     }
 
     @Override
@@ -123,5 +127,12 @@ public class OnePagerItemFragment extends BaseFragment implements OnePagerItemFr
         eventBusMsgBean.setLocation(weatherBean.getCity_name());
         eventBusMsgBean.setTemputure(weatherBean.getTemperature());
         EventBus.getDefault().post(eventBusMsgBean);
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        onePagerItemFragmentPersenter.detachView();
     }
 }

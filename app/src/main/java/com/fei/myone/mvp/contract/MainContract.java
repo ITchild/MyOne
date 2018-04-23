@@ -12,11 +12,10 @@ import com.fei.myone.BaseView;
 public abstract class MainContract {
 
     public interface View extends BaseView{
-        void changeFragment(Fragment fragment,int currId,int forntId);
+        void getFragments(Fragment[] fragments);
     }
 
     public interface Persenter extends BasePersenter<View>{
-        void changeFragment(int position);
 
     }
 

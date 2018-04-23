@@ -8,13 +8,22 @@
     android:background="@color/write"
     tools:context="com.fei.myone.mvp.view.MainActivity">
 
-    <FrameLayout
-        android:id="@+id/main_dis_fl"
+    <!--<FrameLayout-->
+        <!--android:id="@+id/main_dis_fl"-->
+        <!--android:focusableInTouchMode="true"-->
+        <!--android:focusable="true"-->
+        <!--android:descendantFocusability="beforeDescendants"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_above="@+id/main_tabGroupLine_ll">-->
+
+    <!--</FrameLayout>-->
+    <com.fei.myone.ui.CustomViewPager
+        android:id="@+id/main_dis_cvp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/main_tabGroupLine_ll">
-
-    </FrameLayout>
+    </com.fei.myone.ui.CustomViewPager>
 
     <LinearLayout
         android:id="@+id/main_tabGroupLine_ll"

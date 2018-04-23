@@ -6,11 +6,15 @@
 
     <include layout="@layout/all_title"></include>
 
-
-    <com.jcodecraeer.xrecyclerview.XRecyclerView
-        android:id="@+id/all_dis_xrv"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </com.jcodecraeer.xrecyclerview.XRecyclerView>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.jcodecraeer.xrecyclerview.XRecyclerView
+            android:id="@+id/all_dis_xrv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </com.jcodecraeer.xrecyclerview.XRecyclerView>
+    </LinearLayout>
 
 </LinearLayout>

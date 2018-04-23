@@ -15,6 +15,8 @@ import com.fei.myone.di.component.DaggerMainComponent;
 import com.fei.myone.di.moudel.MainMoudel;
 import com.fei.myone.mvp.contract.MainContract;
 import com.fei.myone.mvp.persenter.MainPersenter;
+import com.fei.myone.mvp.view.fragment.adapter.MainPagerAdapter;
+import com.fei.myone.ui.CustomViewPager;
 import com.fei.myone.utils.Constant;
 import com.fei.myone.utils.StatusBarUtils;
 import com.fei.myone.utils.StringUtils;
@@ -36,7 +38,8 @@ public class MainActivity extends BaseActivity implements MainContract.View{
     @Bind(R.id.main_tabGroup_rg)
     RadioGroup main_tabGroup_rg;
 
-    private Fragment currentFragment;
+    @Bind(R.id.main_dis_cvp)
+    public CustomViewPager main_dis_cvp;
 
     @Inject
     MainPersenter mainPersenter;
@@ -44,6 +47,7 @@ public class MainActivity extends BaseActivity implements MainContract.View{
     //退出时的时间
     private long mExitTime;
 
+    private MainPagerAdapter pagerAdapter;
     @Override
     public int getLayout() {
         return R.layout.activity_main;
@@ -71,8 +75,15 @@ public class MainActivity extends BaseActivity implements MainContract.View{
 
     @Override
     public void initData() {
-        currentFragment = mainPersenter.getFristFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.main_dis_fl, currentFragment).commit();
+        mainPersenter.getFragments();
+    }
+
+    @Override
+    public void getFragments(Fragment[] fragments) {
+        pagerAdapter = new MainPagerAdapter(getSupportFragmentManager(),fragments);
+        main_dis_cvp.setAdapter(pagerAdapter);
+        main_dis_cvp.setCurrentItem(0);
+        main_dis_cvp.setOffscreenPageLimit(2); // 设置viewpager的缓存界面数
     }
 
     @Override
@@ -83,33 +94,17 @@ public class MainActivity extends BaseActivity implements MainContract.View{
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId ) {
                     case R.id.main_one_rb:
-                        mainPersenter.changeFragment(0);
+                        main_dis_cvp.setCurrentItem(0);
                         break;
                     case R.id.main_all_rb :
-                        mainPersenter.changeFragment(1);
+                        main_dis_cvp.setCurrentItem(1);
                         break;
                     case R.id.main_me_rb :
-                        mainPersenter.changeFragment(2);
+                        main_dis_cvp.setCurrentItem(2);
                         break;
                 }
             }
         });
-    }
-
-    @Override
-    public void changeFragment(Fragment fragment,int currId,int forntId) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        if(currId > forntId) {
-            transaction.setCustomAnimations(R.anim.side_right_in, R.anim.side_left_out);
-        }else{
-            transaction.setCustomAnimations(R.anim.side_left_in, R.anim.side_right_out);
-        }
-        if (!fragment.isAdded()) {
-            transaction.hide(currentFragment).add(R.id.main_dis_fl, fragment).commit();
-        } else {
-            transaction.hide(currentFragment).show(fragment).commit();
-        }
-        currentFragment = fragment;
     }
 
     @Override

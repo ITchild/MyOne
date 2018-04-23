@@ -6,6 +6,8 @@ import com.fei.myone.mvp.view.fragment.AllFragment;
 import com.fei.myone.mvp.view.fragment.MeFragment;
 import com.fei.myone.mvp.view.fragment.OneFragment;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 /**
@@ -21,16 +23,8 @@ public class MainModel {
 
     }
 
-    public Fragment getFristFragment(){
-        return fragments[0];
-    }
-
-    public Fragment changeFragment(int position){
-        if(position < fragments.length) {
-            return fragments[position];
-        }else{
-            return null;
-        }
+    public Fragment[] getFragments(){
+        return fragments;
     }
 
 

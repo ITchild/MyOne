@@ -2,6 +2,7 @@ package com.fei.myone.mvp.view.fragment;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
@@ -35,7 +36,7 @@ import butterknife.OnClick;
  * Created by fei on 2018/3/30.
  */
 
-public class OneFragment extends BaseFragment implements OneFragmentContract.View{
+public class OneFragment extends BaseFragment implements OneFragmentContract.View,View.OnTouchListener{
 
     @Bind(R.id.onetitle_1_tv)
     TextView onetitle_1_tv;
@@ -69,6 +70,7 @@ public class OneFragment extends BaseFragment implements OneFragmentContract.Vie
         ButterKnife.bind(this,view);
         EventBus.getDefault().register(this);
         oneFragmentPersenter.attachView(this);
+        view.setOnTouchListener(this);
     }
 
     @Override
@@ -123,6 +125,12 @@ public class OneFragment extends BaseFragment implements OneFragmentContract.Vie
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        oneFragment_dis_cvp.requestFocus();
+    }
+
+    @Override
     public void setupComponent() {
         DaggerOneFragmentComponent.builder().oneFragmentMoudel(
                 new OneFragmentMoudel(this)).build().Inject(this);
@@ -135,7 +143,7 @@ public class OneFragment extends BaseFragment implements OneFragmentContract.Vie
         oneViewPagerAdapter = new OneViewPagerAdapter(getActivity().getSupportFragmentManager(),fragmentData);
         oneFragment_dis_cvp.setAdapter(oneViewPagerAdapter);
         oneFragment_dis_cvp.setCurrentItem(0);
-        oneFragment_dis_cvp.setOffscreenPageLimit(2); // 设置viewpager的缓存界面数
+        oneFragment_dis_cvp.setOffscreenPageLimit(1); // 设置viewpager的缓存界面数
         oneFragment_dis_cvp.setPagingEnabled(true);
     }
 
@@ -159,5 +167,10 @@ public class OneFragment extends BaseFragment implements OneFragmentContract.Vie
         super.onDestroy();
         EventBus.getDefault().unregister(this);
         oneFragmentPersenter.detachView();
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        return true;
     }
 }

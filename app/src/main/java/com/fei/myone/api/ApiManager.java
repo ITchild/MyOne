@@ -3,6 +3,8 @@ package com.fei.myone.api;
 
 import com.fei.myone.bean.OneDataBean;
 import com.fei.myone.bean.OneListBean;
+import com.fei.myone.bean.allbean.AllListBannerBean;
+import com.fei.myone.bean.allbean.AllListBannerDataBean;
 
 import java.util.List;
 
@@ -27,18 +29,22 @@ public class ApiManager {
     private static final ApiManagerService apiManager = sRetrofit.create(ApiManagerService.class);
 
 
-
+    //获取one界面的数据
     public static Observable<OneDataBean> getToDayOnes(){
         return apiManager.getToDayOnes();
     }
-
+    //根据日期获取one界面的数据
     public static Observable<OneDataBean> getDateOnes(String date){
         return apiManager.getDateOnes(date);
     }
-//
-//    public static Observable<NewsList> getBeforeNews(String date){
-//        return apiManager.getBeforeNews(date);
-//    }
+    //获取All界面的Banner的数据
+    public static Observable<AllListBannerDataBean> getAllBannerData(){
+        return apiManager.getAllBannerData();
+    }
+    //获取All界面的Item的数据
+    public static Observable<AllListBannerDataBean> getAllItemData(){
+        return apiManager.getAllItemData();
+    }
 //
 //    public static Observable<NewsDetail> getNewsDetail(int id) {
 //        return apiManager.getNewsDetail(id);

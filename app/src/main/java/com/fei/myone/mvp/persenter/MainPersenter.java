@@ -7,6 +7,8 @@ import com.fei.myone.mvp.contract.MainContract;
 import com.fei.myone.mvp.model.MainModel;
 import com.fei.myone.utils.StringUtils;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 /**
@@ -16,7 +18,6 @@ import javax.inject.Inject;
 public class MainPersenter implements MainContract.Persenter{
 
     private MainContract.View view;
-    private int frontId = 0;
 
     @Inject
     MainModel mainModel;
@@ -26,20 +27,8 @@ public class MainPersenter implements MainContract.Persenter{
 
     }
 
-
-    @Override
-    public void changeFragment(int position) {
-        Fragment fragment = mainModel.changeFragment(position);
-        if(fragment != null) {
-            view.changeFragment(fragment,position,frontId);
-        }else{
-            StringUtils.ShowLog("Fragment索引超出界限");
-        }
-        frontId = position;
-    }
-
-    public Fragment getFristFragment(){
-        return mainModel.getFristFragment();
+    public void getFragments(){
+        view.getFragments(mainModel.getFragments());
     }
 
 
