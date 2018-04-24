@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/write"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/alllist_itemhight">
+
+
+    <com.youth.banner.Banner
+        android:id="@+id/item_alllist_banner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="false"
+        android:focusable="false"
+        >
+    </com.youth.banner.Banner>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_4dip"
+        android:background="@color/tableTopGray"></View>
+</LinearLayout>

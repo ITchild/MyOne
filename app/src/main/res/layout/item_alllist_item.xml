@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:padding="@dimen/margin_20dip"
+    android:layout_height="@dimen/alllist_itemhight">
+
+
+    <ImageView
+        android:id="@+id/item_alllist_item_iv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/default_reading_pic"/>
+
+    <TextView
+        android:id="@+id/item_alllist_item_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_10dip"
+        android:textColor="@color/black"
+        tool:text="防火防盗防春节"/>
+
+</LinearLayout>

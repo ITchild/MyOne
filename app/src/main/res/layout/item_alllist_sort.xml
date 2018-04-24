@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/write"
+    android:layout_width="match_parent"
+    android:paddingLeft="@dimen/margin_10dip"
+    android:paddingRight="@dimen/margin_10dip"
+    android:layout_height="@dimen/alllist_itemhight">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/startUpButtomText"
+        android:textSize="@dimen/tv_15sp"
+        android:layout_marginTop="@dimen/margin_10dip"
+        android:layout_marginLeft="@dimen/margin_10dip"
+        android:text="分类导航"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_margin="@dimen/margin_10dip"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/item_alllist_sort_tw"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="@dimen/margin_10dip"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/default_reading_pic"/>
+            <ImageView
+                android:id="@+id/item_alllist_sort_wd"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/default_reading_pic"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/margin_10dip"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/item_alllist_sort_yd"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/default_reading_pic"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_marginBottom="@dimen/margin_10dip"
+        android:layout_marginRight="@dimen/margin_10dip"
+        android:layout_marginLeft="@dimen/margin_10dip"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/item_alllist_sort_lz"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="@dimen/margin_10dip"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/default_reading_pic"/>
+            <ImageView
+                android:id="@+id/item_alllist_sort_ys"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/default_reading_pic"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/margin_10dip"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/item_alllist_sort_yy"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="@dimen/margin_10dip"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/default_reading_pic"/>
+            <ImageView
+                android:id="@+id/item_alllist_sort_dt"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/default_reading_pic"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_4dip"
+        android:layout_marginTop="@dimen/margin_10dip"
+        android:background="@color/tableTopGray"></View>
+</LinearLayout>
